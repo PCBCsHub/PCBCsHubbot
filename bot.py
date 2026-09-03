@@ -7,6 +7,9 @@ app = Flask(__name__)
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 WEBHOOK_URL = os.environ.get("WEBHOOK_URL")
 
+OWNER_ID = 7009251207
+CHANNEL_ID = "@pcbschub"
+
 
 def send_message(chat_id, text):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -31,8 +34,41 @@ def webhook():
 
     message = data["message"]
     chat_id = message["chat"]["id"]
-    text = message.get("text", "").lower().strip()
+    raw_text = message.get("text", "")
+    text = raw_text.lower().strip()
 
+    # 🔐 OWNER-ONLY POST COMMAND
+    if text.startswith("/post"):
+        if chat_id != OWNER_ID:
+            send_message(
+                chat_id,
+                "🔒 This command is available only to the PCBCsHub admin."
+            )
+            return "OK"
+
+        content = raw_text[5:].strip()
+
+        if not content:
+            send_message(
+                chat_id,
+                "📢 Send your post like this:\n\n"
+                "/post\n"
+                "📚 Today's Study Target\n\n"
+                "🧪 Chemistry: Thermodynamics revision\n"
+                "⚡ Physics: Motion in a Straight Line\n"
+                "🧬 Biology: Cell Cycle revision"
+            )
+            return "OK"
+
+        send_message(CHANNEL_ID, content)
+
+        send_message(
+            chat_id,
+            "✅ Posted successfully to PCBCsHub! 📢💙"
+        )
+        return "OK"
+
+    # START
     if text == "/start":
         send_message(
             chat_id,
@@ -50,6 +86,7 @@ Use /help to see all commands.
 🔥 Learn • Practice • Revise • Improve"""
         )
 
+    # HELP
     elif text == "/help":
         send_message(
             chat_id,
@@ -68,6 +105,7 @@ Use /help to see all commands.
 /links - All PCBCsHub platforms"""
         )
 
+    # NOTES
     elif text == "/notes":
         send_message(
             chat_id,
@@ -76,6 +114,7 @@ Use /help to see all commands.
 https://t.me/handwrittennotespcbcshub"""
         )
 
+    # NCERT
     elif text == "/ncert":
         send_message(
             chat_id,
@@ -96,6 +135,7 @@ https://t.me/handwrittennotespcbcshub
 https://t.me/pcbschub"""
         )
 
+    # MCQ
     elif text == "/mcq":
         send_message(
             chat_id,
@@ -113,6 +153,7 @@ More MCQ resources will be added soon.
 https://t.me/pcbschub"""
         )
 
+    # PYQ
     elif text == "/pyq":
         send_message(
             chat_id,
@@ -130,6 +171,7 @@ More PYQ resources will be added soon.
 https://t.me/pcbschub"""
         )
 
+    # REVISION
     elif text == "/revision":
         send_message(
             chat_id,
@@ -149,6 +191,7 @@ https://t.me/handwrittennotespcbcshub
 https://t.me/pcbschub"""
         )
 
+    # NEET
     elif text == "/neet":
         send_message(
             chat_id,
@@ -169,6 +212,7 @@ https://t.me/pcbschub
 https://t.me/handwrittennotespcbcshub"""
         )
 
+    # CUET
     elif text == "/cuet":
         send_message(
             chat_id,
@@ -188,6 +232,7 @@ https://t.me/pcbschub
 https://youtube.com/@pcbcshub"""
         )
 
+    # CBSE
     elif text == "/cbse":
         send_message(
             chat_id,
@@ -208,6 +253,7 @@ https://t.me/pcbschub
 https://youtube.com/@pcbcshub"""
         )
 
+    # STUDY PLAN
     elif text == "/studyplan":
         send_message(
             chat_id,
@@ -225,9 +271,10 @@ A simple study cycle:
 
 🔥 Consistency > perfection
 
-Use PCBCsHub resources to Learn • Practice • Revise • Improve."""
+Learn • Practice • Revise • Improve."""
         )
 
+    # MOTIVATION
     elif text == "/motivation":
         send_message(
             chat_id,
@@ -246,6 +293,7 @@ Then repeat tomorrow. 💙
 — PCBCsHub"""
         )
 
+    # LINKS
     elif text == "/links":
         send_message(
             chat_id,
