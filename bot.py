@@ -62,7 +62,7 @@ Use /help to see all commands.
 /revision - Quick revision
 /neet - NEET resources
 /cuet - CUET resources
-/cbse - CBSE resources
+/cbse - CBSE preparation
 /studyplan - Study plans
 /motivation - Study motivation
 /links - All PCBCsHub platforms"""
@@ -71,7 +71,179 @@ Use /help to see all commands.
     elif text == "/notes":
         send_message(
             chat_id,
-            "📝 PCBCsHub Handwritten Notes:\nhttps://t.me/handwrittennotespcbcshub"
+            """📝 PCBCsHub Handwritten Notes
+
+https://t.me/handwrittennotespcbcshub"""
+        )
+
+    elif text == "/ncert":
+        send_message(
+            chat_id,
+            """📖 NCERT Resources
+
+📚 NCERT is the foundation for NEET & CBSE preparation.
+
+Use PCBCsHub for:
+• NCERT-based revision
+• Important concepts
+• Chapter-wise resources
+• Quick revision material
+
+📝 Handwritten Notes:
+https://t.me/handwrittennotespcbcshub
+
+💬 Join PCBCsHub Telegram:
+https://t.me/pcbschub"""
+        )
+
+    elif text == "/mcq":
+        send_message(
+            chat_id,
+            """❓ MCQ Practice
+
+Practice questions to test your preparation.
+
+🎯 NEET
+📚 CBSE
+🧪 PCB subjects
+
+More MCQ resources will be added soon.
+
+💬 PCBCsHub Telegram:
+https://t.me/pcbschub"""
+        )
+
+    elif text == "/pyq":
+        send_message(
+            chat_id,
+            """📝 Previous Year Questions
+
+Practice PYQs to understand:
+• Important concepts
+• Question patterns
+• Frequently tested topics
+• Exam-level difficulty
+
+More PYQ resources will be added soon.
+
+💬 PCBCsHub Telegram:
+https://t.me/pcbschub"""
+        )
+
+    elif text == "/revision":
+        send_message(
+            chat_id,
+            """⚡ Quick Revision
+
+Revise smarter with PCBCsHub!
+
+🧠 Short revision resources
+📖 NCERT-based revision
+📝 Handwritten notes
+❓ Practice questions
+
+📝 Notes:
+https://t.me/handwrittennotespcbcshub
+
+💬 Telegram:
+https://t.me/pcbschub"""
+        )
+
+    elif text == "/neet":
+        send_message(
+            chat_id,
+            """🩺 NEET Preparation
+
+📚 NCERT Revision
+❓ MCQs
+📝 PYQs
+⚡ Quick Revision
+📖 Handwritten Notes
+
+Your NEET preparation starts with consistent practice.
+
+💬 PCBCsHub Telegram:
+https://t.me/pcbschub
+
+📝 Handwritten Notes:
+https://t.me/handwrittennotespcbcshub"""
+        )
+
+    elif text == "/cuet":
+        send_message(
+            chat_id,
+            """🎯 CUET Preparation
+
+📚 NCERT-based preparation
+❓ MCQs & PYQs
+⚡ Quick Revision
+📝 Study resources
+
+Follow PCBCsHub for CUET resources and updates.
+
+💬 Telegram:
+https://t.me/pcbschub
+
+▶️ YouTube:
+https://youtube.com/@pcbcshub"""
+        )
+
+    elif text == "/cbse":
+        send_message(
+            chat_id,
+            """📚 CBSE Preparation
+
+Prepare smarter with:
+
+📖 NCERT-based resources
+📝 Notes
+❓ MCQs
+⚡ Quick Revision
+🎯 Exam-focused practice
+
+💬 PCBCsHub Telegram:
+https://t.me/pcbschub
+
+▶️ YouTube:
+https://youtube.com/@pcbcshub"""
+        )
+
+    elif text == "/studyplan":
+        send_message(
+            chat_id,
+            """🗓️ Study Plan
+
+A simple study cycle:
+
+1️⃣ Learn the concept
+2️⃣ Make/revise notes
+3️⃣ Read NCERT
+4️⃣ Practice MCQs
+5️⃣ Solve PYQs
+6️⃣ Analyse mistakes
+7️⃣ Revise again 🔁
+
+🔥 Consistency > perfection
+
+Use PCBCsHub resources to Learn • Practice • Revise • Improve."""
+        )
+
+    elif text == "/motivation":
+        send_message(
+            chat_id,
+            """🔥 Study Motivation
+
+You don't need to finish everything today.
+
+Just complete today's target.
+Then repeat tomorrow. 💙
+
+📚 Learn
+✍️ Practice
+🔁 Revise
+📈 Improve
+
+— PCBCsHub"""
         )
 
     elif text == "/links":
@@ -92,16 +264,12 @@ https://t.me/handwrittennotespcbcshub
 https://youtube.com/@pcbcshub"""
         )
 
-    elif text == "/motivation":
-        send_message(
-            chat_id,
-            "🔥 Keep going! Small progress every day becomes a big result. 💙\n\n— PCBCsHub"
-        )
-
     else:
         send_message(
             chat_id,
-            "🤔 I don't recognize that command.\n\nUse /help to see what I can do."
+            """🤔 I don't recognize that command.
+
+Use /help to see what I can do."""
         )
 
     return "OK"
